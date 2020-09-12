@@ -24,7 +24,7 @@ def getprofile_stats(username):
 	data=soup.find('span',{'class':'Counter'})
 	repositories=data.text
 	profile_data={'name':name,'location':location,'stars':stars,'following':following,'followers':followers,'repositories':repositories}
-	return profile_data
+	print(profile_data)
 
 
 if __name__ == '__main__':
@@ -48,4 +48,5 @@ if __name__ == '__main__':
 
 	if args.gitusername:
 		gitpinnedrepo(args.gitusername)
+		getprofile_stats(args.gitusername)
 		exit()
