@@ -3,14 +3,14 @@ import requests
 import bs4 
 import argparse
 import sys
-# from colorama import Fore, Back, Style
+from colorama import Fore
 
 def gitpinnedrepo(username):
-	res = requests.get("https://github.com/%s" %(username)).content
-	soup = bs4.BeautifulSoup(res,"html.parser")
+	res = requests.get("https://github.com/%s" %(username))
+	soup = bs4.BeautifulSoup(res.text,"html.parser")
 	pinned = soup.find_all("span", class_='repo')
 	for pinned_repo in range(len(pinned)):
-		return pinned[pinned_repo].text
+		print(Fore.WHITE + pinned[pinned_repo].text)
 
 def getprofile_stats(username):
 	res = requests.get("https://github.com/{}".format(username))
@@ -26,5 +26,26 @@ def getprofile_stats(username):
 	profile_data={'name':name,'location':location,'stars':stars,'following':following,'followers':followers,'repositories':repositories}
 	return profile_data
 
+
 if __name__ == '__main__':
-	username = gitpinnedrepo(sys.argv[1])
+	parser = argparse.ArgumentParser()
+	parser.add_argument('--gitusername',help='Github username')
+	args = parser.parse_args()
+	print(Fore.RED + '''
+
+
+  ▄████  ██▓▄▄▄█████▓  ▄████  ▒█████  
+ ██▒ ▀█▒▓██▒▓  ██▒ ▓▒ ██▒ ▀█▒▒██▒  ██▒
+▒██░▄▄▄░▒██▒▒ ▓██░ ▒░▒██░▄▄▄░▒██░  ██▒
+░▓█  ██▓░██░░ ▓██▓ ░ ░▓█  ██▓▒██   ██░
+░▒▓███▀▒░██░  ▒██▒ ░ ░▒▓███▀▒░ ████▓▒░
+ ░▒   ▒ ░▓    ▒ ░░    ░▒   ▒ ░ ▒░▒░▒░ 
+  ░   ░  ▒ ░    ░      ░   ░   ░ ▒ ▒░ 
+░ ░   ░  ▒ ░  ░      ░ ░   ░ ░ ░ ░ ▒  
+      ░  ░                 ░     ░ ░   > v1.0
+
+''')
+
+	if args.gitusername:
+		gitpinnedrepo(args.gitusername)
+		exit()
