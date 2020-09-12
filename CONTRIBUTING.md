@@ -13,7 +13,7 @@ Sounds interesting!! So lets start contributing...
 - Clone the fork [repository](https://github.com/ankitdobhal/Gitgo)
    - git clone https://github.com/<Your_username>/Gitgo.git
 
-  -  Add Scripts related to your respective issues.
+ -  Add Scripts related to your respective issues.
      - git add <your-contribution>
 
   -  Add a commit message !
