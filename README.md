@@ -24,7 +24,7 @@
 
 ## ⚡ How to use?
 ```bash
--> python3.8 Gitgo.py --username xyz
+-> python3.8 Gitgo.py --gitusername xyz
 ```
 **Vedio link : https://drive.google.com/file/d/1GhyOe_7UPwLPvNgjLHSsnrzR8vgEg7Ew/**
 
